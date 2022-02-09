@@ -3,7 +3,7 @@ package com.javaex.vo;
 public class CategoryVo {
 	
 	private int cateNo;
-	private int id;
+	private String id;
 	private String cateName;
 	private String description;
 	private String regDate;
@@ -14,7 +14,7 @@ public class CategoryVo {
 	}
 	
 	
-	public CategoryVo(int cateNo, int id, String cateName, String description, String regDate) {
+	public CategoryVo(int cateNo, String id, String cateName, String description, String regDate) {
 		this.cateNo = cateNo;
 		this.id = id;
 		this.cateName = cateName;
@@ -34,12 +34,12 @@ public class CategoryVo {
 	}
 
 
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

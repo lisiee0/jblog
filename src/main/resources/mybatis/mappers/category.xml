@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="category">
+	
+	<!-- 블로그 생성시 카테고리 초기값 -->
+	<insert id="initialSet" parameterType="map">
+		<![CDATA[
+			insert into		category
+			values			(seq_category_no.nextval, #{id}, #{cateName}, #{description}, sysdate)
+		]]>	
+	</insert>
+</mapper>
