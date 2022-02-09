@@ -33,7 +33,7 @@ public class UserController {
 	@RequestMapping("/checkDup")
 	public String checkDup(@ModelAttribute UserVo vo) {
 		System.out.println("userController/checkDup()");
-		System.out.println(userService.checkDup(vo));
+
 		return userService.checkDup(vo);
 	}
 	
