@@ -17,4 +17,10 @@ public class UserService {
 	public void join(UserVo vo) {
 		ud.join(vo);
 	}
+	
+	
+	// 로그인
+	public UserVo login(UserVo vo) {
+		return ud.getUser(vo);
+	}
 }

@@ -31,12 +31,14 @@
 		      			<td><label for="textPassword">패스워드</label> </td>
 		      			<td><input id="textPassword" type="password" name="password"></td>   
 		      			   			
-		      		</tr> 
-		      		<tr>
-		      			<td colspan="2" id="tdMsg" colspan="2">
-		      				<span>아이디 또는 비번을 확인해 주세요.</span>
-		      			</td>
-		      		</tr> 
+		      		</tr>
+		      		<c:if test="${param.result ne null}"> 
+			      		<tr>
+			      			<td colspan="2" id="tdMsg" colspan="2">
+			      				<span>아이디 또는 비밀번호를 확인해 주세요.</span>
+			      			</td>
+			      		</tr>
+		      		</c:if>
 		      	</table>
 	      		<div id="btnArea">
 					<button class="btn" type="submit" >로그인</button>

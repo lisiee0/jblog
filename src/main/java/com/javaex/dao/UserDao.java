@@ -17,4 +17,10 @@ public class UserDao {
 	public void join(UserVo vo) {
 		sqlSession.insert("user.join", vo);
 	}
+	
+	
+	// 로그인
+	public UserVo getUser(UserVo vo) {
+		return sqlSession.selectOne("user.getUser", vo);
+	}
 }
