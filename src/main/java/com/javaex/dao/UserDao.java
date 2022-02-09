@@ -23,4 +23,10 @@ public class UserDao {
 	public UserVo getUser(UserVo vo) {
 		return sqlSession.selectOne("user.getUser", vo);
 	}
+	
+	
+	// 아이디 중복체크
+	public int checkDup(UserVo vo) {
+		return sqlSession.selectOne("user.checkDup", vo);
+	}
 }

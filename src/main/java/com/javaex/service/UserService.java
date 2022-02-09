@@ -23,4 +23,17 @@ public class UserService {
 	public UserVo login(UserVo vo) {
 		return ud.getUser(vo);
 	}
+	
+	
+	// 아이디 중복체크
+	public String checkDup(UserVo vo) {
+		int count= ud.checkDup(vo);
+		
+		if(count>0) {
+			return "inuse";
+		}
+		else {
+			return "available";
+		}
+	}
 }

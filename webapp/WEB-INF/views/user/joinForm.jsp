@@ -8,6 +8,7 @@
 <title>JBlog</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/jblog.css">
 
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery/jquery-1.12.4.js"></script>
 </head>
 <body>
 	<div id="center-content">
@@ -25,13 +26,15 @@
 					</colgroup>
 		      		<tr>
 		      			<td><label for="txtId">아이디</label></td>
-		      			<td><input id="txtId" type="text" name="id"></td>
+		      			<td><input id="txtId" type="text" name="id" value=""></td>
 		      			<td><button id="btnIdCheck" type="button">아이디체크</button></td>
 		      		</tr>
-		      		<tr>
+		      		
+	      			<tr>
 		      			<td></td>
-		      			<td id="tdMsg" colspan="2">사용할 수 있는 아이디 입니다.</td>
-		      		</tr> 
+		      			<td id="tdMsg" colspan="2"></td>
+	      			</tr> 
+				
 		      		<tr>
 		      			<td><label for="txtPassword">패스워드</label> </td>
 		      			<td><input id="txtPassword" type="password" name="password"  value=""></td>   
@@ -65,6 +68,45 @@
 	</div>
 
 </body>
+
+<script>
+
+	// (이벤트) '중복체크' 버튼 클릭할때
+	$("#btnIdCheck").on("click", function() {
+		var chkId= $("#txtId").val();
+		checkDup(chkId);
+	});
+
+	
+	// (기능) 중복체크 
+	function checkDup(chkId) {
+		
+		$.ajax({
+
+			url : "${pageContext.request.contextPath}/user/checkDup",
+			type : "post",
+			// contentType : "application/json",
+			data : {id : chkId},
+
+			dataType : "json",
+			success : function(result) {
+				/*성공시 처리해야될 코드 작성*/
+				console.log(result);
+				if (result=="available") {
+					$("#tdMsg").text("사용할 수 있는 아이디 입니다.");
+				}
+				else {
+					$("#tdMsg").text("다른 아이디로 가입해 주세요.");	
+				}
+			},
+			error : function(XHR, status, error) {
+				console.error(status + " : " + error);
+			}
+		});
+	}
+
+
+</script>
 
 
 </html>
