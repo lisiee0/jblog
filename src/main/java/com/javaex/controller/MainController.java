@@ -11,5 +11,4 @@ public class MainController {
 		System.out.println("maincon/main()");
 		return "/main/index";
 	}
-
 }
