@@ -10,4 +10,20 @@
 			values			(#{blogId}, #{blogTitle}, #{logoFile})
 		]]>	
 	</insert>
+	
+	
+	<!-- 블로그정보 불러오기 -->
+	<select id="info" parameterType="BlogVo" resultType="BlogVo">
+		<![CDATA[
+			select		b.id blogId,
+						blogTitle,
+						logoFile,
+						userName
+			from		blog b, users u
+			where		b.id= u.id
+			and 		b.id= #{id}
+		]]>
+	</select>
+	
+	
 </mapper>
