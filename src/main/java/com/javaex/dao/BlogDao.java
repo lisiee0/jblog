@@ -25,4 +25,10 @@ public class BlogDao {
 	public BlogVo blogInfo(String id) {
 		return sqlSession.selectOne("blog.info", id);
 	}
+	
+	
+	// 블로그 기본설정변경
+	public void changeSet(BlogVo vo) {
+		sqlSession.update("blog.changeSet", vo); 
+	}
 }

@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.javaex.service.BlogService;
 import com.javaex.vo.BlogVo;
@@ -41,9 +43,15 @@ public class BlogController {
 	
 	// 블로그 기본설정변경
 	@RequestMapping("/admin/basic/changeSet")
-	public String changeSet(@ModelAttribute BlogVo vo) {
+	public String changeSet(@RequestParam("file") MultipartFile file,
+							@ModelAttribute BlogVo vo, HttpSession session) {
 		System.out.println("blogController/changeSet()");
-		System.out.println(vo);
+		
+		// 기본설정변경 & 변경된 블로그정보 가져오기
+		// 기존 session 정보 업데이트
+		session.removeAttribute("blogInfo");
+		session.setAttribute("blogInfo", blogService.changeSet(file, vo));
+		
 		
 		return "redirect:/{id}/admin/basic";
 	}

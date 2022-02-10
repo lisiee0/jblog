@@ -29,7 +29,7 @@ public class UserService {
 		Map<String, String> bMap= new HashMap<String, String>();
 		bMap.put("blogId", vo.getId());
 		bMap.put("blogTitle", vo.getUserName()+"의 블로그입니다.");
-		bMap.put("logoFile", "spring-logo.jpg");
+		bMap.put("logoFile", "");
 		bd.blogCreate(bMap);
 		
 		// 블로그 생성시 카테고리 기본값

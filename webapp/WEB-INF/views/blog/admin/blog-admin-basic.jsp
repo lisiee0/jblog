@@ -26,7 +26,7 @@
 			<!-- //admin-menu -->
 			
 			<div id="admin-content">
-				<form action="${pageContext.request.contextPath}/${blogInfo.blogId}/admin/basic/changeSet" method="post" >
+				<form action="${pageContext.request.contextPath}/${blogInfo.blogId}/admin/basic/changeSet" method="post" enctype="multipart/form-data">
 	 		      	<table id="admin-basic">
 	 		      		<colgroup>
 							<col style="width: 100px;">
@@ -48,6 +48,8 @@
 			      	<div id="btnArea">
 			      		<button class="btn_l" type="submit" >기본설정변경</button>
 			      	</div>
+			      	<input type="hidden" name="blogId" value="${blogInfo.blogId}">
+			      	<input type="hidden" name="userName" value="${blogInfo.userName}">
 				</form>
 			
 			</div>

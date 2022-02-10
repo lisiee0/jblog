@@ -26,4 +26,15 @@
 	</select>
 	
 	
+	<!-- 블로그 기본설정변경 -->
+	<update id="changeSet" parameterType="BlogVo">
+		<![CDATA[
+			update		blog
+			set			blogTitle= #{blogTitle},
+						logoFile= #{logoFile}
+			where		id= #{blogId}		
+		]]>
+	</update>
+	
+	
 </mapper>
