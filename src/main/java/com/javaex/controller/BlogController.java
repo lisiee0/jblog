@@ -48,10 +48,9 @@ public class BlogController {
 		System.out.println("blogController/changeSet()");
 		
 		// 기본설정변경 & 변경된 블로그정보 가져오기
-		// 기존 session 정보 업데이트
+		// 기존 session blogInfo 업데이트
 		session.removeAttribute("blogInfo");
 		session.setAttribute("blogInfo", blogService.changeSet(file, vo));
-		
 		
 		return "redirect:/{id}/admin/basic";
 	}
