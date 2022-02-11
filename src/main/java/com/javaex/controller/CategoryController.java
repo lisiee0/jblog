@@ -28,6 +28,7 @@ public class CategoryController {
 		return "/blog/admin/blog-admin-cate";
 	}
 	
+	
 	// 카테고리 리스트 불러오기
 	@ResponseBody
 	@RequestMapping("/list")
