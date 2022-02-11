@@ -27,7 +27,6 @@
 	</select>
 	
 	
-	
 	<!-- 특정 카테고리 불러오기 -->
 	<select id="getCategory" parameterType="CategoryVo" resultType="CategoryVo">
 		<![CDATA[
@@ -62,8 +61,6 @@
 			delete from		category
 			where 			cateNo= #{cateNo}
 		]]>
-	
-	
 	</delete>
 	
 </mapper>
