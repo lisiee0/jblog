@@ -44,8 +44,4 @@ public class CategoryDao {
 	public int delete(CategoryVo vo) {
 		return sqlSession.delete("category.delete", vo);
 	}
-	
-	
-	
-
 }
