@@ -8,7 +8,7 @@
 <title>JBlog</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/jblog.css">
 
-
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery/jquery-1.12.4.js"></script>
 </head>
 
 <body>
@@ -45,26 +45,10 @@
 			      			<th>삭제</th>      			
 			      		</tr>
 		      		</thead>
-		      		<tbody id="cateList">
+		      		
+		      		<tbody id="cateList" name="cateList" value="${blogInfo.blogId}">
 		      			<!-- 리스트 영역 -->
-		      			<tr>
-							<td>1</td>
-							<td>자바프로그래밍</td>
-							<td>7</td>
-							<td>자바기초와 객체지향</td>
-						    <td class='text-center'>
-						    	<img class="btnCateDel" src="${pageContext.request.contextPath}/assets/images/delete.jpg">
-						    </td>
-						</tr>
-						<tr>
-							<td>2</td>
-							<td>오라클</td>
-							<td>5</td>
-							<td>오라클 설치와 sql문</td>
-						    <td class='text-center'>
-						    	<img class="btnCateDel" src="${pageContext.request.contextPath}/assets/images/delete.jpg">
-						    </td>
-						</tr>
+
 						<!-- 리스트 영역 -->
 					</tbody>
 				</table>
@@ -76,15 +60,16 @@
 					</colgroup>
 		      		<tr>
 		      			<td class="t">카테고리명</td>
-		      			<td><input type="text" name="name" value=""></td>
+		      			<td><input id="cateName" type="text" name="name" value=""></td>
 		      		</tr>
 		      		<tr>
 		      			<td class="t">설명</td>
-		      			<td><input type="text" name="desc"></td>
+		      			<td><input id="description" type="text" name="desc" value=""></td>
 		      		</tr>
 		      	</table> 
 			
 				<div id="btnArea">
+					<input id="id" type="hidden" name="id" value="${blogInfo.blogId}">
 		      		<button id="btnAddCate" class="btn_l" type="submit" >카테고리추가</button>
 		      	</div>
 			
@@ -102,6 +87,157 @@
 	<!-- //wrap -->
 </body>
 
+<script>
+	
+	// 로딩되기 전에 요청
+	$(document).ready(function() {
+		var id= $("#cateList").val();
+		console.log(id);
+		// 리스트 출력
+		showList(id);
+	});
+		
+	
+	// (이벤트) '카테고리추가' 버튼 눌렀을때
+	$("#btnAddCate").on("click", function() {
+		console.log("add button click");
+
+		// 데이터 수집
+		var cateName= $("#cateName").val();
+		var description= $("#description").val();
+		var id= $("#id").val();
+
+		// 객체 만들기
+		var CategoryVo= {
+			cateName : cateName,
+			description : description,
+			id : id
+		};
+
+		console.log(CategoryVo);
+		
+		add(CategoryVo);
+	});
+	
+	
+	// (이벤트) '삭제' 버튼눌렀을때
+	$("#cateList").on("click", ".btnCateDel", function() {
+		var cateNo= $(this).data("no");
+		console.log(cateNo);
+		remove(cateNo);
+	});
+	
+	
+		
+	// (기능) 카테고리 추가
+	function add(CategoryVo) {
+		
+		$.ajax({
+
+			url : "${pageContext.request.contextPath}/${blogInfo.blogId}/admin/category/add",
+			type : "post",
+			// contentType : "application/json",
+			data : CategoryVo,
+
+			dataType : "json",
+			success : function(vo) {
+				/*성공시 처리해야될 코드 작성*/
+				console.log(vo);
+				render(vo, "up");
+
+				// 입력 데이터 초기화
+				$("#cateName").val("");
+				$("#description").val("");
+			},
+			error : function(XHR, status, error) {
+				console.error(status + " : " + error);
+			}
+		});	
+	};
+		
+	// (기능) 카테고리 삭제
+	function remove(cateNo) {
+		
+		$.ajax({
+
+			url : "${pageContext.request.contextPath}/${blogInfo.blogId}/admin/category/delete",
+			type : "post",
+			// contentType : "application/json",
+			data : {cateNo: cateNo},
+
+			dataType : "json",
+			success : function(state) {
+				console.log(state);
+				/*성공시 처리해야될 코드 작성*/
+				if(state=="success") {
+					$("#t"+cateNo).remove();
+				}
+				else {
+
+				}
+			},
+			error : function(XHR, status, error) {
+				console.error(status + " : " + error);
+			}
+		});	
+	};
+	
+	
+	// (기능) 카테고리 리스트 출력
+	function showList(id) {
+		
+		$.ajax({
+	
+			url : "${pageContext.request.contextPath}/${blogInfo.blogId}/admin/category/list",
+			type : "post",
+			// contentType : "application/json",
+			data : {id: id},
+	
+			dataType : "json",
+			success : function(cList) {
+				/*성공시 처리해야될 코드 작성*/
+				console.log(cList);
+	
+				for (var i = 0; i < cList.length; i++) {
+					render(cList[i], "down");
+				}
+	
+			},
+			error : function(XHR, status, error) {
+				console.error(status + " : " + error);
+			}
+		});
+	};
+	
+	// (기능) 리스트 그리기
+	function render(vo, updown) {
+	
+		var str = '';
+		str += ' <tr id="t'+vo.cateNo+'"> ';
+		str += ' 	<td>'+vo.cateNo+'</td> ';
+		str += ' 	<td>'+vo.cateName+'</td> ';
+		str += ' 	<td>7</td> ';
+		str += ' 	<td>'+vo.description+'</td> ';
+		str += ' 	<td class="text-center"> ';
+		str += '  		<img class="btnCateDel" data-no="'+vo.cateNo+'" src="${pageContext.request.contextPath}/assets/images/delete.jpg"> ';
+		str += ' 	</td> ';
+		str += ' </tr> ';
+
+		if (updown == 'down') {
+			$("#cateList").append(str);
+		} 
+		else if (updown == 'up') {
+			$("#cateList").prepend(str);
+		} 
+		else {
+			console.log("updown error");
+		}
+	};
+
+
+
+
+</script>
 
 
 
