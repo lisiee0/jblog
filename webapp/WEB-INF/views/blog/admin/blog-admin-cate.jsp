@@ -155,6 +155,7 @@
 		});	
 	};
 		
+	
 	// (기능) 카테고리 삭제
 	function remove(cateNo) {
 		
@@ -208,6 +209,7 @@
 			}
 		});
 	};
+	
 	
 	// (기능) 리스트 그리기
 	function render(vo, updown) {
