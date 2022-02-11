@@ -46,7 +46,7 @@
 			      		</tr>
 		      		</thead>
 		      		
-		      		<tbody id="cateList" name="cateList" value="${blogInfo.blogId}">
+		      		<tbody id="cateList" value="${blogInfo.blogId}">
 		      			<!-- 리스트 영역 -->
 
 						<!-- 리스트 영역 -->
@@ -92,8 +92,6 @@
 	// 로딩되기 전에 요청
 	$(document).ready(function() {
 		var id= $("#cateList").val();
-		console.log(id);
-		// 리스트 출력
 		showList(id);
 	});
 		
@@ -113,8 +111,6 @@
 			description : description,
 			id : id
 		};
-
-		console.log(CategoryVo);
 		
 		add(CategoryVo);
 	});
@@ -123,7 +119,6 @@
 	// (이벤트) '삭제' 버튼눌렀을때
 	$("#cateList").on("click", ".btnCateDel", function() {
 		var cateNo= $(this).data("no");
-		console.log(cateNo);
 		remove(cateNo);
 	});
 	
@@ -142,7 +137,6 @@
 			dataType : "json",
 			success : function(vo) {
 				/*성공시 처리해야될 코드 작성*/
-				console.log(vo);
 				render(vo, "up");
 
 				// 입력 데이터 초기화
@@ -168,7 +162,6 @@
 
 			dataType : "json",
 			success : function(state) {
-				console.log(state);
 				/*성공시 처리해야될 코드 작성*/
 				if(state=="success") {
 					$("#t"+cateNo).remove();
