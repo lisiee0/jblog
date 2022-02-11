@@ -2,5 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="post">
-
+	
+	<!-- 글작성 -->
+	<insert id="write" parameterType="PostVo">
+		<![CDATA[
+			insert into		post
+			values 			(seq_post_no.nextval, #{cateNo}, #{postTitle}, #{postContent}, sysdate)
+		]]>
+	</insert>
 </mapper>
