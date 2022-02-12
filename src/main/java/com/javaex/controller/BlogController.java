@@ -41,6 +41,7 @@ public class BlogController {
 		return "/blog/admin/blog-admin-basic";
 	}
 	
+	
 	// 블로그 기본설정변경
 	@RequestMapping("/admin/basic/changeSet")
 	public String changeSet(@RequestParam("file") MultipartFile file,
