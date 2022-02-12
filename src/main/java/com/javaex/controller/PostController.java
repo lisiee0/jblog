@@ -40,5 +40,4 @@ public class PostController {
 		return "redirect:/{id}/admin/writeForm";
 	}
 	
-
 }
