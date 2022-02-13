@@ -20,9 +20,9 @@
 
 		<div id="content">
 			<ul id="admin-menu" class="clearfix">
-				<li class="tabbtn"><a href="${pageContext.request.contextPath}/${blogInfo.blogId}/admin/basic">기본설정</a></li>
-				<li class="tabbtn selected"><a href="${pageContext.request.contextPath}/${blogInfo.blogId}/admin/category">카테고리</a></li>
-				<li class="tabbtn"><a href="${pageContext.request.contextPath}/${blogInfo.blogId}/admin/writeForm">글작성</a></li>
+				<li class="tabbtn"><a href="${pageContext.request.contextPath}/${blogInfo.BlogVo.blogId}/admin/basic">기본설정</a></li>
+				<li class="tabbtn selected"><a href="${pageContext.request.contextPath}/${blogInfo.BlogVo.blogId}/admin/category">카테고리</a></li>
+				<li class="tabbtn"><a href="${pageContext.request.contextPath}/${blogInfo.BlogVo.blogId}/admin/writeForm">글작성</a></li>
 			</ul>
 			<!-- //admin-menu -->
 			
@@ -46,7 +46,7 @@
 			      		</tr>
 		      		</thead>
 		      		
-		      		<tbody id="cateList" value="${blogInfo.blogId}">
+		      		<tbody id="cateList" value="${blogInfo.BlogVo.blogId}">
 		      			<!-- 리스트 영역 -->
 
 						<!-- 리스트 영역 -->
@@ -69,7 +69,7 @@
 		      	</table> 
 			
 				<div id="btnArea">
-					<input id="id" type="hidden" name="id" value="${blogInfo.blogId}">
+					<input id="id" type="hidden" name="id" value="${blogInfo.BlogVo.blogId}">
 		      		<button id="btnAddCate" class="btn_l" type="submit" >카테고리추가</button>
 		      	</div>
 			
@@ -129,7 +129,7 @@
 		
 		$.ajax({
 
-			url : "${pageContext.request.contextPath}/${blogInfo.blogId}/admin/category/add",
+			url : "${pageContext.request.contextPath}/${blogInfo.BlogVo.blogId}/admin/category/add",
 			type : "post",
 			// contentType : "application/json",
 			data : CategoryVo,
@@ -155,7 +155,7 @@
 		
 		$.ajax({
 
-			url : "${pageContext.request.contextPath}/${blogInfo.blogId}/admin/category/delete",
+			url : "${pageContext.request.contextPath}/${blogInfo.BlogVo.blogId}/admin/category/delete",
 			type : "post",
 			// contentType : "application/json",
 			data : {cateNo: cateNo},
@@ -182,7 +182,7 @@
 		
 		$.ajax({
 	
-			url : "${pageContext.request.contextPath}/${blogInfo.blogId}/admin/category/list",
+			url : "${pageContext.request.contextPath}/${blogInfo.BlogVo.blogId}/admin/category/list",
 			type : "post",
 			// contentType : "application/json",
 			data : {id: id},

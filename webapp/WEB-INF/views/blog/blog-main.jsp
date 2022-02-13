@@ -42,7 +42,7 @@
 					</div>
 					<ul id="cateList" class="text-left">
 						<c:forEach items="${blogInfo.cateList}" var="vo">
-							<li class="cateListClass" data-cno="${vo.cateNo}"><a href="${pageContext.request.contextPath}/${blogInfo.BlogVo.blogId}?cateNo=${vo.cateNo}">${vo.cateName}</a></li>
+							<li class="cateListClass" data-cateno="${vo.cateNo}"><a href="">${vo.cateName}</a></li>
 						</c:forEach>
 					</ul>
 				</div>
@@ -112,6 +112,19 @@
 	<!-- //wrap -->
 </body>
 
+<script>
+
+	// (이벤트) 특정 카테고리 클릭할때
+	$("#cateList").on("click", function() {
+		
+		
+	});
+	
+	
+	
+
+
+</script>
 
 
 </html>

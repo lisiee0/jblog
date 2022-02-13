@@ -19,10 +19,11 @@
          				c.cateNo cateNo,
          				postTitle,
          				to_char(p.regDate,'yyyy-mm-dd') regDate
-			from     post p, category c
-			where    p.cateNo= c.cateNo
-			and      p.cateNo= #{cateNo}
-			and      c.id= #{id}
+			from     	post p, category c
+			where    	p.cateNo= c.cateNo
+			and      	p.cateNo= #{cateNo}
+			and      	c.id= #{id}
+			order by 	regDate desc
 		]]>
 	</select>
 	

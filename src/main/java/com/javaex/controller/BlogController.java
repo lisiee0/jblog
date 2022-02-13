@@ -55,5 +55,14 @@ public class BlogController {
 		
 		return "redirect:/{id}/admin/basic";
 	}
-
+	
+	/*
+	// 카테고리 > 포스트 리스트 불러오기
+	@RequestMapping("/postList")
+	public List<PostVo> postList() {
+		System.out.println("blogController/postList()");
+		
+		
+	}
+	*/
 }

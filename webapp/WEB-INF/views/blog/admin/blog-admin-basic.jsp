@@ -19,14 +19,14 @@
 
 		<div id="content">
 			<ul id="admin-menu" class="clearfix">
-				<li class="tabbtn selected"><a href="${pageContext.request.contextPath}/${blogInfo.blogId}/admin/basic">기본설정</a></li>
-				<li class="tabbtn"><a href="${pageContext.request.contextPath}/${blogInfo.blogId}/admin/category">카테고리</a></li>
-				<li class="tabbtn"><a href="${pageContext.request.contextPath}/${blogInfo.blogId}/admin/writeForm">글작성</a></li>
+				<li class="tabbtn selected"><a href="${pageContext.request.contextPath}/${blogInfo.BlogVo.blogId}/admin/basic">기본설정</a></li>
+				<li class="tabbtn"><a href="${pageContext.request.contextPath}/${blogInfo.BlogVo.blogId}/admin/category">카테고리</a></li>
+				<li class="tabbtn"><a href="${pageContext.request.contextPath}/${blogInfo.BlogVo.blogId}/admin/writeForm">글작성</a></li>
 			</ul>
 			<!-- //admin-menu -->
 			
 			<div id="admin-content">
-				<form action="${pageContext.request.contextPath}/${blogInfo.blogId}/admin/basic/changeSet" method="post" enctype="multipart/form-data">
+				<form action="${pageContext.request.contextPath}/${blogInfo.BlogVo.blogId}/admin/basic/changeSet" method="post" enctype="multipart/form-data">
 	 		      	<table id="admin-basic">
 	 		      		<colgroup>
 							<col style="width: 100px;">
@@ -38,7 +38,7 @@
 			      		</tr>
 			      		<tr>
 			      			<td><label>로고이미지</label></td>
-			      			<td class="text-left"><img src="${pageContext.request.contextPath}/upload/${blogInfo.logoFile}"></td>   
+			      			<td class="text-left"><img src="${pageContext.request.contextPath}/upload/${blogInfo.BlogVo.logoFile}"></td>   
 			      		</tr>      		
 			      		<tr>
 			      			<td>&nbsp;</td>
@@ -48,8 +48,8 @@
 			      	<div id="btnArea">
 			      		<button class="btn_l" type="submit" >기본설정변경</button>
 			      	</div>
-			      	<input type="hidden" name="blogId" value="${blogInfo.blogId}">
-			      	<input type="hidden" name="userName" value="${blogInfo.userName}">
+			      	<input type="hidden" name="blogId" value="${blogInfo.BlogVo.blogId}">
+			      	<input type="hidden" name="userName" value="${blogInfo.BlogVo.userName}">
 				</form>
 			
 			</div>
