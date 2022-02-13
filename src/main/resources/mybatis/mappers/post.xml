@@ -23,7 +23,7 @@
 			where    	p.cateNo= c.cateNo
 			and      	p.cateNo= #{cateNo}
 			and      	c.id= #{id}
-			order by 	regDate desc
+			order by 	postNo desc
 		]]>
 	</select>
 	
