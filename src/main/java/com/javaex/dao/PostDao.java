@@ -26,4 +26,5 @@ public class PostDao {
 	public List<PostVo> getList(Map<String, Object> map) {
 		return sqlSession.selectList("post.getList", map);
 	}
+	
 }

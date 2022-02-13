@@ -13,5 +13,18 @@
 	
 	
 	<!-- 글 리스트 불러오기 -->
+	<select id="getList" parameterType="map" resultType="PostVo">
+		<![CDATA[
+			select		postNo,
+         				c.cateNo cateNo,
+         				postTitle,
+         				to_char(p.regDate,'yyyy-mm-dd') regDate
+			from     post p, category c
+			where    p.cateNo= c.cateNo
+			and      p.cateNo= #{cateNo}
+			and      c.id= #{id}
+		]]>
+	</select>
+	
 	
 </mapper>

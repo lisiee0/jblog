@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.javaex.dao.BlogDao;
 import com.javaex.dao.CategoryDao;
+import com.javaex.dao.PostDao;
 import com.javaex.vo.BlogVo;
 
 @Service
@@ -23,12 +24,23 @@ public class BlogService {
 	private BlogDao bd;
 	@Autowired
 	private CategoryDao cd;
+	@Autowired
+	private PostDao pd;
+	
 	
 	// 블로그 정보 가져오기
 	public Map<String, Object> getBlog(String id) {
+		
+		// 블로그 메인 포스트 리스트 초기값
+		Map<String, Object> pMap= new HashMap<String, Object>();
+		pMap.put("id", id);
+		pMap.put("cateNo", cd.getTopCateNo(id)); // 최상단 카테고리넘버
+		
+		
 		Map<String, Object> bMap= new HashMap<String, Object>();
 		bMap.put("BlogVo", bd.blogInfo(id));
 		bMap.put("cateList", cd.getList(id));
+		bMap.put("postList", pd.getList(pMap));
 		return bMap;
 	}
 	

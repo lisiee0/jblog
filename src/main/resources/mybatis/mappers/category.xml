@@ -63,4 +63,15 @@
 		]]>
 	</delete>
 	
+	
+	
+	<!-- 카테고리 중 최상단 카테고리 번호 불러오기 -->
+	<select id="topCateNo" parameterType="CategoryVo" resultType="int">
+		<![CDATA[
+			select		max(cateNo)
+			from        category
+			where       id= #{id}	
+		]]>
+	</select>
+
 </mapper>

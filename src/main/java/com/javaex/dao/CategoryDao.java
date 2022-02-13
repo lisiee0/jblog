@@ -44,4 +44,10 @@ public class CategoryDao {
 	public int delete(CategoryVo vo) {
 		return sqlSession.delete("category.delete", vo);
 	}
+	
+	
+	// 카테고리 중 최상단 카테고리 번호 불러오기(블로그 메인 기본값)
+	public int getTopCateNo(String id) {
+		return sqlSession.selectOne("category.topCateNo", id);
+	}
 }
