@@ -22,31 +22,27 @@
 				<div id="profile">
 					
 					<c:choose>
-						<c:when test="${blogInfo.logoFile eq null}">
+						<c:when test="${blogInfo.BlogVo.logoFile eq null}">
 							<!-- 기본이미지 -->
 							<img id="proImg" src="${pageContext.request.contextPath}/assets/images/spring-logo.jpg">
 						</c:when>
 						
 						<c:otherwise>
 							<!-- 사용자업로드 이미지 -->
-							<img id="proImg" src="${pageContext.request.contextPath}/upload/${blogInfo.logoFile}">
+							<img id="proImg" src="${pageContext.request.contextPath}/upload/${blogInfo.BlogVo.logoFile}">
 						</c:otherwise>
 					</c:choose>
 					
-					<div id="nick">${blogInfo.userName}(${blogInfo.blogId})님</div>
+					<div id="nick">${blogInfo.BlogVo.userName}(${blogInfo.BlogVo.blogId})님</div>
 				</div>
 				<div id="cate">
 					<div class="text-left">
 						<strong>카테고리</strong>
 					</div>
 					<ul id="cateList" class="text-left">
-						<li><a href="$}">카테고리5</a></li>
-						<li><a href="$}">카테고리4</a></li>
-						<li><a href="$}">카테고리3</a></li>
-						<li><a href="$}">카테고리2</a></li>
-						<li><a href="$}">카테고리1</a></li>
-						<li><a href="$}">미분류</a></li>
-						
+						<c:forEach items="${blogInfo.cateList}" var="vo">
+							<li class="cateListClass" data-cno="${vo.cateNo}"><a href="${pageContext.request.contextPath}/${blogInfo.BlogVo.blogId}?cateNo=${vo.cateNo}">${vo.cateName}</a></li>
+						</c:forEach>
 					</ul>
 				</div>
 			</div>

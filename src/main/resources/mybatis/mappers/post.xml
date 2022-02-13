@@ -10,4 +10,8 @@
 			values 			(seq_post_no.nextval, #{cateNo}, #{postTitle}, #{postContent}, sysdate)
 		]]>
 	</insert>
+	
+	
+	<!-- 글 리스트 불러오기 -->
+	
 </mapper>
