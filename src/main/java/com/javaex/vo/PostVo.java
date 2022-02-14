@@ -13,6 +13,7 @@ public class PostVo {
 		
 	}
 	
+	
 	public PostVo(int postNo, int cateNo, String postTitle, String postContent, String regDate) {
 		this.postNo = postNo;
 		this.cateNo = cateNo;
