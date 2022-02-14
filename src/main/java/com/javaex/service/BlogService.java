@@ -74,5 +74,4 @@ public class BlogService {
 		// 업데이트된 blogInfo 불러오기
 		return bd.blogInfo(vo.getBlogId());
 	}
-
 }
