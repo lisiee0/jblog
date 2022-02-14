@@ -61,8 +61,7 @@ public class BlogController {
 	@RequestMapping("/postList")
 	public List<PostVo> postList() {
 		System.out.println("blogController/postList()");
-		
-		
+
 	}
 	*/
 }
