@@ -14,7 +14,7 @@ import com.javaex.service.BlogService;
 import com.javaex.vo.BlogVo;
 
 @Controller
-@RequestMapping("/{id}")
+@RequestMapping("{id}")
 public class BlogController {
 	
 	@Autowired
