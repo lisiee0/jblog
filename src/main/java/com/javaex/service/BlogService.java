@@ -45,6 +45,11 @@ public class BlogService {
 	}
 	
 	
+	// 블로그 정보 가져오기 (블로그 기본설정)
+	public BlogVo getBlogSet(String id) {
+		return bd.blogInfo(id);		
+	}
+	
 	// 블로그 기본설정변경
 	public BlogVo changeSet(MultipartFile file, BlogVo vo) {
 		String saveDir= "C:\\javaStudy\\upload";

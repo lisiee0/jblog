@@ -38,7 +38,15 @@
 			      		</tr>
 			      		<tr>
 			      			<td><label>로고이미지</label></td>
-			      			<td class="text-left"><img src="${pageContext.request.contextPath}/upload/${blogInfo.BlogVo.logoFile}"></td>   
+			      			<c:choose>
+				      			<c:when test="${!empty blogInfo.logoFile}">
+				      				<td class="text-left"><img src="${pageContext.request.contextPath}/assets/images/spring-logo.jpg"></td>
+				      			</c:when>
+				      			<c:otherwise>
+				      				<td class="text-left"><img src="${pageContext.request.contextPath}/upload/${blogInfo.BlogVo.logoFile}"></td>
+				      			</c:otherwise>
+			      			</c:choose>
+
 			      		</tr>      		
 			      		<tr>
 			      			<td>&nbsp;</td>
