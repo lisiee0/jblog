@@ -65,6 +65,7 @@ public class BlogController {
 		System.out.println("blogController/postList()");
 	}
 	*/
+	
 }
 
 
